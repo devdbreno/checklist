@@ -1,0 +1,116 @@
+<nav class="navbar navbar-dark justify-content-between" style="background-color: #242947;">
+  <a class="navbar-brand">
+    <i class="fas fa-list" style="margin-right: 8px;"></i>
+    CheckList
+  </a>
+  <form class="form-inline">
+    <input (keyup)="findAllTodos($event.target.value)" class="form-control" type="search" placeholder="Procure uma ToDo" />
+    <button class="btn btn-dark ml-2" type="button"><i class="fas fa-search"></i></button>
+  </form>
+</nav>
+
+<div class="container">
+  <div class="col-md-8">
+    <div class="card-hover-shadow-2x card">
+      <div class="d-block text-right card-footer">
+        <div class="card-header mb-3">
+          <input
+            autofocus
+            pattern=".{1,}"
+            type="text"
+            class="form-control form-control-md mb-2"
+            placeholder="O que precisa ser feito?"
+            [(ngModel)]="newTodo"
+            (keyup.enter)="createTodo()"
+            (blur)="createTodo()"
+          />
+          <button type="button" class="btn btn-success ml-2 mb-2" (click)="createTodo()">
+            <i class="fas fa-plus-circle"></i>
+          </button>
+        </div>
+        <div class="row text-center">
+          <div class="col">
+            <button type="button" class="btn btn-primary btn-outline-success" [routerLink]="['/ativas']" [class.active]="path === 'ativas'">
+              Ativas
+            </button>
+          </div>
+          <div class="col">
+            <button type="button" class="btn btn-primary btn-outline-success" [routerLink]="['/todas']" [class.active]="path === 'todas'">
+              Todas
+            </button>
+          </div>
+          <div class="col">
+            <button type="button" class="btn btn-primary btn-outline-success" [routerLink]="['/completas']" [class.active]="path === 'completas'">
+              Completas
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-area-sm">
+        <perfect-scrollbar>
+          <div style="position: static;">
+            <div class="ps-content">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngFor="let todo of todos; index as i; first as isFirst">
+                  <div class="widget-content p-0">
+                    <div class="widget-content-wrapper">
+                      <div *ngIf="todo.editing; else showTodo" class="col-md-10">
+                        <input
+                          #editTodo
+                          autofocus
+                          type="text"
+                          class="form-control form-control-md"
+                          [value]="todo.title"
+                          (keyup.enter)="updateTodo(todo, { fields: ['title'], value: editTodo.value }, i)"
+                          (keyup.enter)="todo.editing = false"
+                          (keyup.escape)="todo.editing = false"
+                          (blur)="todo.editing = false"
+                        />
+                      </div>
+                      <ng-template #showTodo>
+                        <div class="widget-content-left">
+                          <div class="widget-heading">
+                            <div class="custom-control custom-checkbox">
+                              <input
+                                type="checkbox"
+                                class="custom-control-input"
+                                id="{{ todo.id + todo.title }}"
+                                [checked]="todo.isDone"
+                                (click)="updateTodo(todo, { fields: ['isDone'], value: !todo.isDone }, i)"
+                              />
+
+                              <label class="custom-control-label" for="{{ todo.id + todo.title }}"> </label>
+
+                              <s *ngIf="todo.isDone; else notDone" style="color:blue">{{ todo.title }}</s>
+
+                              <ng-template #notDone>
+                                <label class="custom-control-label" for="{{ todo.id + todo.title }}"> </label>
+                                <span (dblclick)="todo.editing = !todo.editing">
+                                  {{ todo.title }}
+                                </span>
+                              </ng-template>
+                            </div>
+                          </div>
+                          <div class="widget-subheading">
+                            {{ todo.timeToDisplay }}
+                          </div>
+                        </div>
+                      </ng-template>
+
+                      <div class="widget-content-right">
+                        <button class="border-0 btn btn-outline-danger" (click)="deleteTodo(todo.id, i)">
+                          <i class="fa fa-trash-alt"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </perfect-scrollbar>
+      </div>
+    </div>
+  </div>
+</div>

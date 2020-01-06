@@ -1,0 +1,46 @@
+{
+  "name": "frontend",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "lint": "ng lint"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~8.2.14",
+    "@angular/common": "~8.2.14",
+    "@angular/compiler": "~8.2.14",
+    "@angular/core": "~8.2.14",
+    "@angular/forms": "~8.2.14",
+    "@angular/platform-browser": "~8.2.14",
+    "@angular/platform-browser-dynamic": "~8.2.14",
+    "@angular/router": "~8.2.14",
+    "@types/fuse": "^2.6.0",
+    "bootstrap": "^4.4.1",
+    "date-fns": "^2.8.1",
+    "fuzzy-search": "^3.0.2",
+    "jquery": "^3.4.1",
+    "ngx-socket-io": "^3.0.1",
+    "rxjs": "~6.4.0",
+    "tslib": "^1.10.0",
+    "web-component-essentials": "^0.0.4",
+    "zone.js": "~0.9.1"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.803.21",
+    "@angular/cli": "~8.3.21",
+    "@angular/compiler-cli": "~8.2.14",
+    "@angular/language-service": "~8.2.14",
+    "@fortawesome/fontawesome-free": "^5.12.0",
+    "@types/fuzzy-search": "^2.1.0",
+    "@types/jquery": "^3.3.31",
+    "@types/node": "~8.9.4",
+    "codelyzer": "^5.0.0",
+    "protractor": "~5.4.0",
+    "ts-node": "~7.0.0",
+    "tslint": "~5.15.0",
+    "typescript": "~3.5.3"
+  }
+}
