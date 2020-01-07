@@ -1,8 +1,6 @@
 # CheckList
 
-<p style="text-align: center;">
- <img src="https://media.giphy.com/media/Y1q2QdEBnBwVePgprB/giphy.gif" alt="Demo"> 
-</p>
+<img src="https://media.giphy.com/media/Y1q2QdEBnBwVePgprB/giphy.gif" alt="Demo"> 
 
 ## Primeiros passos:
 
