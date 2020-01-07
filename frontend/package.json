@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "format": "prettier --write \"src/**/*.ts\"",
     "lint": "ng lint"
   },
   "private": true,
@@ -23,6 +24,7 @@
     "fuzzy-search": "^3.0.2",
     "jquery": "^3.4.1",
     "ngx-socket-io": "^3.0.1",
+    "popper.js": "^1.16.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "web-component-essentials": "^0.0.4",
@@ -38,6 +40,7 @@
     "@types/jquery": "^3.3.31",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "prettier": "^1.19.1",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
